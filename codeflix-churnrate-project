@@ -1,0 +1,42 @@
+-- I first create a temporary table showing the 3 months dates - of the range I want to analyse
+WITH months AS
+(SELECT
+'2017-01-01' AS first_day,
+'2017-01-31' AS last_day
+UNION
+SELECT
+'2017-02-01' AS first_day,
+'2017-02-28' AS last_day
+UNION
+SELECT
+'2017-03-01' AS first_day,
+'2017-03-31' AS last_day),
+
+-- a temporary table that I join with the subscriptions data
+cross_join AS
+(SELECT * FROM subscriptions 
+CROSS JOIN months),
+
+-- This new temporary table, status, helps me to divide the users in two groups wether they belong to the segment 87 or the segment 30, the two segments I want to analyse
+status AS
+(SELECT id, first_day AS month,
+CASE WHEN
+(segment = 87) AND (subscription_start < first_day) AND (subscription_end > first_day OR subscription_end IS NULL) THEN 1 ELSE 0 END AS is_active_87,
+CASE WHEN
+(segment = 30) AND (subscription_start < first_day) AND (subscription_end > first_day OR subscription_end IS NULL) THEN 1 ELSE 0 END AS is_active_30,
+CASE WHEN
+(segment = 87) AND (subscription_end BETWEEN first_day AND last_day) THEN 1 ELSE 0 END AS is_canceled_87,
+CASE WHEN
+(segment = 30) AND (subscription_end BETWEEN first_day AND last_day) THEN 1 ELSE 0 END AS is_canceled_30
+FROM cross_join),
+
+-- I also want to check the number of active vs canceled subscriptons for each segment and for each month
+status_aggregate AS
+(SELECT month, SUM(is_active_87) AS sum_active_87, SUM (is_active_30) AS sum_active_30, SUM(is_canceled_87) AS sum_canceled_87, SUM (is_canceled_30) AS sum_canceled_30
+FROM status
+GROUP BY month)
+
+-- I finally calculate the churn rates for both
+SELECT month, 1.0*sum_canceled_30/sum_active_30 AS churn_rate_30, 1.0*sum_canceled_87/sum_active_87 AS churn_rate_87 FROM status_aggregate;
+
+-- >> The segment with the lowest churn rate is segment 30, with on average a churn rate 4 times inferior to segment 87 churn rate. This information would be very valuable to the marketing team to understand that segment 87 might not be as of a good investment as segment 30
