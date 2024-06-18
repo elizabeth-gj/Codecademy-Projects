@@ -12,7 +12,7 @@ We get subscription data in a `subscriptions` table which is made of 4 columns:
 ***Data Set:*** The `subscriptions` file is attached :
 [Codecademy-Projects _ Codeflix Churn Rates - Feuille 1.csv](https://github.com/user-attachments/files/15890222/Codecademy-Projects._.Codeflix.Churn.Rates.-.Feuille.1.csv)
 
-***Tools:*** The full SQL script is [here](). More information on how I built the query step by step below.
+***Tools:*** The full SQL script is [here](https://github.com/elizabeth-gj/Codecademy-Projects/blob/master/Codeflix_Calculating_Churn_Rates/codeflix_churnrate_sql). More information on how I built the query step by step below.
 ***
 
 ## Explorating the Data:
