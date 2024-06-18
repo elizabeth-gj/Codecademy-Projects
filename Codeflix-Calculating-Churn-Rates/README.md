@@ -15,7 +15,7 @@ We get subscription data in a `subscriptions` table which is made of 4 columns:
 ***Tools:*** The full SQL script is [here](https://github.com/elizabeth-gj/Codecademy-Projects/blob/master/Codeflix_Calculating_Churn_Rates/codeflix_churnrate_sql). More information on how I built the query step by step below.
 ***
 
-## Explorating the Data:
+## Exploring the Data:
 Let's explore the data first:
 
 ```sql
