@@ -3,7 +3,7 @@
 ## Objective and Context
 A new Furniture Store just opened "Lovely Loveseats". We want to support the speed up the process of creating receipts for customers.
 
-***Tools:*** The full .py script is [here](https://github.com/elizabeth-gj/Codecademy-Projects/blob/master/Carlys-Clippers-Loops-Lists/carlys_clippers_py)
+***Tools:*** The full .py script is [here](https://github.com/elizabeth-gj/Codecademy-Projects/blob/master/Lovely-Loveseats-Programming-Calculations/lovely_loveseats_py)
 
 ## Building the Store Catalog:
 
