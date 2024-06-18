@@ -15,7 +15,7 @@ prices = [30, 25, 40, 20, 20, 35, 50, 35]
 last_week = [2, 3, 5, 8, 4, 4, 6, 2]
 ```
 
-***Tools:*** The full .py script is [here]()
+***Tools:*** The full .py script is [here](https://github.com/elizabeth-gj/Codecademy-Projects/blob/master/Carlys-Clippers-Loops-Lists/carlys_clippers_py)
 
 ## Prices:
 
